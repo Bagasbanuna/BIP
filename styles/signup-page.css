@@ -1,0 +1,6 @@
+.container-signup {
+    background-image: url(../public/image/landingPage.jpg);
+    background-size: cover;
+    min-height: 100vh;
+
+}

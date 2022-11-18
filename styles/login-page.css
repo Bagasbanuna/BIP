@@ -1,0 +1,47 @@
+.container-fluid {
+    padding: 0;
+
+}
+
+.background {
+    background-image: url(../public/image/landingPage.jpg);
+    background-size: cover;
+}
+
+.main {
+    background-image: url(../public/image/landingPage.jpg);
+    /* min-height: 100vh; */
+    display: flex;
+    flex-direction: row
+}
+
+.title1 {
+    padding-top: 12px;
+    margin-bottom: 1px;
+    text-align: center;
+}
+
+.title2 {
+    margin-top: 1px;
+    padding-left: 10px;
+    text-align: center;
+    font-family: serif;
+}
+
+/* .button {
+    font-weight: bold;
+    width: 300px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+} */
+
+.checkbox {
+   margin-left: 10px;
+}
+
+.link {
+    margin-left: 35px;
+}
