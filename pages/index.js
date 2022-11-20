@@ -24,7 +24,7 @@ export default function Home() {
           </div>
           <div className={styles.button}>
             <Link href={'/login-page'}>
-              <Button outline style={{color: 'black'}}>Login</Button></Link>
+              <Button outline style={{color: 'black', borderRadius: 20}}>Login</Button></Link>
           </div>
 
         

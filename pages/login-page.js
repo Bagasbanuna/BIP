@@ -56,7 +56,8 @@ function LoginPage() {
                                     width: 300 + 'px',
                                     fontWeight: "bold",
                                     color: "black",
-                                    marginTop: 30 + 'px'
+                                    marginTop: 30 + 'px',
+                                    borderRadius: 20
                                 }}>Login</Button>
                             <FormGroup>
                                 <Label
