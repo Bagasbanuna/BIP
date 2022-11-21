@@ -45,7 +45,6 @@ function DetailsTwo() {
                             alignItems: 'center',
                         }}>
                             <Form>
-
                                 <FormGroup>
                                     <Card style={{
                                         padding: 5,

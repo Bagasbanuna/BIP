@@ -4,20 +4,31 @@ import { Button, Card, CardBody, CardFooter, CardHeader, CardText, CardTitle, Co
 function DetailsOne() {
     return (
         <div className="background">
-            <main>
-                <div style={{
-                    display: "flex",
-                    minHeight: 100 + 'vh',
-                    justifyContent: "flex-end",
-                    // textAlign: "center"
-                }}>
-                    {/* <div style={{
-                        display:"flex",
-                        minHeight: 100 +'vh',
-                        justifyContent: "flex-start"
+            <main style={{
+                display: "flex",
+                flexDirection: "row",
+                minHeight: 100 + 'vh',
+            }}>
+                <div
+                    style={{
+                        flex: 1,
+                        display: 'flex',
+                        minHeight: 100 + 'vh',
+                        flexDirection: 'column',
+                        textAlign: 'center',
+                        justifyContent: 'center',
                     }}>
-                        <div>DAM</div>
-                    </div> */}
+                    <h1 style={{ fontFamily: 'fantasy' }}>DAM</h1>
+                    <h5 style={{ fontFamily: 'initial' }}>Digital Assets Management</h5>
+                </div>
+                <div style={{
+                    flex: 0,
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    justifyItems: "flex-end",
+                    alignContent: "flex-end",
+                }}>
+
                     <Card style={{
                         backgroundColor: '#D9D9D9',
                         // minWidth: 30 + 'vw'
@@ -43,14 +54,7 @@ function DetailsOne() {
                                     <Input id="tempatLahir" type="text" placeholder="Tempat Lahir"></Input>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Row>
-                                        <Col md='4' style={{}}>
-                                            <Button disabled style={{ backgroundColor: '#ffffff', color: 'black' }}>Tgl.Lahir</Button>
-                                        </Col>
-                                        <Col md='8'>
-                                            <Input id="tanggalLahir" type="date"></Input>
-                                        </Col>
-                                    </Row>
+                                    <Input id="tanggalLahir" type="date"></Input>
                                 </FormGroup>
                                 <FormGroup>
                                     <Input id="" type="" placeholder="Agama"></Input>
@@ -64,6 +68,19 @@ function DetailsOne() {
                                 <FormGroup>
                                     <Input id="" type="" placeholder="Status"></Input>
                                 </FormGroup>
+                                <Link href='/details-two'>
+                                    <Button outline
+
+                                        style={{
+                                            borderRadius: 20,
+                                            width: 40 + 'vh',
+                                            justifyContent: "center",
+                                            alignItems: "center",
+                                            alignContent: "center",
+                                            color: 'black'
+
+                                        }}>Simpan</Button>
+                                </Link>
                             </Form>
                         </CardBody>
                         <CardFooter style={{
@@ -73,17 +90,18 @@ function DetailsOne() {
                         }}>
                             <Link href='/details-two'>
 
-                            Semua data telah terisi
+                                Semua data telah terisi
                             </Link>
                             <Input style={{
                                 marginLeft: 5,
                             }} type="checkbox">
-                                
-                                </Input>
+
+                            </Input>
                         </CardFooter>
                     </Card>
-
                 </div>
+
+
             </main>
         </div>
     )
