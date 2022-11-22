@@ -52,7 +52,7 @@ function DetailsTwo() {
                                     }}>
                                         <CardText tag='h5'>Foto KTP</CardText>
                                         {/* <Image src={"/../public/image/iconKtp.png"} height={100} width={100} alt={"apa"} priority={true}/> */}
-                                        <Image
+                                        {/* <Image
                                             
                                             src={'/../public/image/iconKtp.png'}
                                             alt='iconKtp'
@@ -65,7 +65,7 @@ function DetailsTwo() {
                                                 alignItems: "center",
                                                 justifyItems: "center",
                                             }}
-                                        />
+                                        /> */}
                                         <Input type="file"
                                             style={{
                                                 justifyContent: "center",
@@ -78,7 +78,7 @@ function DetailsTwo() {
                                         marginTop: 10,
                                     }}>
                                         <CardText tag='h5'>Selfie KTP</CardText>
-                                        <Image
+                                        {/* <Image
                                             src={'/../public/image/selfieKtp.png'}
                                             alt="pppp"
                                             priority={true}
@@ -89,9 +89,8 @@ function DetailsTwo() {
                                                 justifyContent: "center",
                                                 alignItems: "center",
                                                 justifyItems: "center",
-
                                             }}
-                                        />
+                                        /> */}
                                         <Input type="file"
                                             style={{
                                                 justifyContent: "center",

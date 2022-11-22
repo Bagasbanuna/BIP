@@ -2,10 +2,39 @@
 
 import Link from "next/link"
 import { Button, Card, CardBody, CardTitle, Form, FormGroup, Input, Label } from "reactstrap"
+import { useState, useEffect } from 'react'
+
 
 function LoginPage() {
-    return ( 
-        <div className="background" style={{ minHeight: 100 + 'vh'}}>
+    // const [data, setData] = useState("")
+    // const [isLoading, setLoading] = useState(false)
+
+    // email is value, setEmail untuk menampung value, useState untuk meload sesuatu secara realtime
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+    useEffect(() => {
+        // setLoading(true)
+
+        // const body ={
+        //     email: "",
+        //     password: ""
+        // }
+
+        // fetch('/pages/api/create-user.js',{method: 'POST', body: body })
+        // .then((res) => res.json())
+        // .then((data =>{
+        //     setData(data)
+        //     setLoading(false)
+        // }))
+
+    }, [])
+
+    // if (isLoading) return <p>Loading ..</p>
+    // if (!data) return <p>No Profile</p>
+
+    return (
+        <div className="background" style={{ minHeight: 100 + 'vh' }}>
             <main>
                 <div style={{
                     display: 'flex',
@@ -23,9 +52,7 @@ function LoginPage() {
                     justifyContent: 'center',
                     alignItems: 'center',
                     textAlign: 'center'
-
                 }}>
-
                     <Card style={{
                         padding: 10,
                         backgroundColor: '#D9D9D9'
@@ -35,50 +62,80 @@ function LoginPage() {
                         <CardBody
                             style={{}}>
                             <Form style={{}}>
-                                
+                                {email}
+                                {password}
                                 <FormGroup>
-                                    <Input id="email " placeholder="Email"></Input>
+                                    <Input id="email" type="" placeholder="Email"
+                                        onChange={(e) => {
+                                            setEmail(e.target.value)
+                                        }}></Input>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Input id="password" placeholder="Password"></Input>
+                                    <Input id="password" type="" placeholder="Password"
+                                        onChange={(e) => {
+                                            setPassword(e.target.value)
+                                        }}></Input>
                                 </FormGroup>
                                 <FormGroup>
-                                <Input type="checkbox" />
-                                <Label check className="checkbox">
-                                    Simpan Password
-                                </Label>
-                                <Link href='./' className="link">Lupa Password ?</Link>
-                            </FormGroup>
-                            <Button
-                                color='secondary'
-                                outline
-                                style={{
-                                    width: 300 + 'px',
-                                    fontWeight: "bold",
-                                    color: "black",
-                                    marginTop: 30 + 'px',
-                                    borderRadius: 20
-                                }}>Login</Button>
-                            <FormGroup>
-                                <Label
+                                    <Input type="checkbox" />
+                                    <Label check className="checkbox">
+                                        Simpan Password
+                                    </Label>
+                                    <Link href='./' className="link">Lupa Password ?</Link>
+                                </FormGroup>
+                                <Button
+                                    color='secondary'
+                                    outline
                                     style={{
-                                        width: 300,
-                                        alignItems: "center",
-                                        textAlign: "center",
-                                        justifyContent: "center",
-                                        fontFamily: "initial"
+                                        width: 300 + 'px',
+                                        fontWeight: "bold",
+                                        color: "black",
+                                        marginTop: 30 + 'px',
+                                        borderRadius: 20
+                                    }}
+                                    onClick={function () {
+                                        const body = {
+                                            email: email,
+                                            password: password
+                                        }
+                                        // fetch sama seperti axios sebagai jembatan pengantar data ke  DB
+                                        // buat api baru menggunakan login, karena create untuk daftar
+                                        fetch('/api/create-user', { method: 'POST', body: JSON.stringify(body) })
+                                            .then((res) => {
+                                                // menggunkan try catch untuk mengecek jika suatu waktu terjadi error
 
-                                    }}>Jika belum memiliki akun silahkan
-                                    <Link href="/signup-page"> Daftar</Link>
-                                </Label>
-                            </FormGroup>
+                                                try {
+                                                    res.json().then(val => {
+                                                        console.log(val)
+                                                    })
+                                                } catch (error) {
+                                                    res.text(res.text())
+                                                }
+                                            })
+
+
+                                    }}
+                                >Login</Button>
+                                <FormGroup>
+                                    <Label
+                                        style={{
+                                            width: 300,
+                                            alignItems: "center",
+                                            textAlign: "center",
+                                            justifyContent: "center",
+                                            fontFamily: "initial"
+
+                                        }}>Jika belum memiliki akun silahkan
+                                        <Link href="/signup-page"> Daftar</Link>
+                                    </Label>
+                                </FormGroup>
                             </Form>
                         </CardBody>
                     </Card>
                 </div>
 
             </main>
-           
+
         </div>
     )
 }
