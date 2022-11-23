@@ -1,7 +1,13 @@
 import Link from "next/link"
+import { useState } from "react"
 import { Button, Card, CardBody, CardFooter, CardHeader, CardText, CardTitle, Col, Form, FormGroup, Input, Label, Row } from "reactstrap"
 
 function DetailsOne() {
+
+    const [namaDepan, setNamaDepan] = useState("")
+    const [namaBelakang, setNamaBelakang] = useState("")
+    const [tanggalLahir, setTanggalLahir] = useState("")
+
     return (
         <div className="background">
             <main style={{
@@ -45,16 +51,25 @@ function DetailsOne() {
                         }}>
                             <Form>
                                 <FormGroup>
-                                    <Input id="namaDepan" type="text" placeholder="Nama Depan"></Input>
+                                    <Input id="namaDepan" type="text" placeholder="Nama Depan"
+                                    onChange={(e)=>{
+                                        setNamaDepan(e.target.value)
+                                    }}></Input>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Input id="namaBelakang" type="text" placeholder="Nama Belakang"></Input>
+                                    <Input id="namaBelakang" type="text" placeholder="Nama Belakang"
+                                    onChange={(e)=>{
+                                        setNamaBelakang(e.target.value)
+                                    }}></Input>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Input id="tanggalLahir" type="datetime"
+                                    onChange={(e)=>{
+                                        setTanggalLahir(e.target.value)
+                                    }}></Input>
                                 </FormGroup>
                                 <FormGroup >
                                     <Input id="tempatLahir" type="text" placeholder="Tempat Lahir"></Input>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Input id="tanggalLahir" type="date"></Input>
                                 </FormGroup>
                                 <FormGroup>
                                     <Input id="" type="" placeholder="Agama"></Input>
@@ -68,7 +83,9 @@ function DetailsOne() {
                                 <FormGroup>
                                     <Input id="" type="" placeholder="Status"></Input>
                                 </FormGroup>
-                                <Link href='/details-two'>
+                                <Link href=
+                                '/details-two'
+                                >
                                     <Button outline
 
                                         style={{
@@ -79,6 +96,15 @@ function DetailsOne() {
                                             alignContent: "center",
                                             color: 'black'
 
+                                        }}
+                                        onClick={()=>{
+                                            const body = {
+                                                namaDepan: namaDepan,
+                                                namaBelakang: namaBelakang,
+                                                tanggalLahir
+                                            }
+
+                                            fetch('/api/api-create-profile', {method: JSON.stringify()})
                                         }}>Simpan</Button>
                                 </Link>
                             </Form>

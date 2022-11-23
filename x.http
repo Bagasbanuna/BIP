@@ -1,3 +1,4 @@
+// USER
 ### get user
 GET http://localhost:3000/api/get-user HTTP/1.1
 
@@ -6,7 +7,22 @@ POST http://localhost:3000/api/create-user HTTP/1.1
 Content-Type: application/json
 
 {
-    "username":"b3",
-    "email":"b3@gmail.com",
+    "username":"b4",
+    "email":"b4@gmail.com",
     "password":"1234"
+}
+
+// PROFILE
+### get profile
+GET  http://localhost:3000/api/api-get-profile HTTP/1.1
+
+### create profile
+POST  http://localhost:3000/api/api-create-profile HTTP/1.1
+Content-Type: application/json
+
+{
+    "namaDepan":"nuna",
+    "namaBelakang":"ninuna",
+    "tanggalLahir": "1996-11-19T00:00:00.000Z"
+
 }

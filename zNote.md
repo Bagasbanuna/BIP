@@ -22,3 +22,10 @@ Prisma for database (install for global: npm i -g prisma) and for client (npm in
 
  <!-- API -->
  <!-- Cek kembali saat menghubungkan API, saat melakukan install rest client harus paham konsep API , bukan hanya controller(seperti PHP) -->
+
+ <!-- Urutan Penyambungan API -->
+ <!-- Buat dulu model nya di schema.prisma
+    1. Buat file dari CRUD yang akan kita buat di file /api
+    2. Coba dahulu di x.http 
+    3. Jika sudah maka di coba pada FE nya
+ -->

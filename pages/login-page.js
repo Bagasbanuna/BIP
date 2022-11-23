@@ -13,6 +13,7 @@ function LoginPage() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
+    // useEffect digunkan saat mengecek data 
     useEffect(() => {
         // setLoading(true)
 
@@ -100,7 +101,8 @@ function LoginPage() {
                                         }
                                         // fetch sama seperti axios sebagai jembatan pengantar data ke  DB
                                         // buat api baru menggunakan login, karena create untuk daftar
-                                        fetch('/api/create-user', { method: 'POST', body: JSON.stringify(body) })
+                                        // fetch ngelink ke '/api/<nama file>'
+                                        fetch('/api/api-login', { method: 'POST', body: JSON.stringify(body) })
                                             .then((res) => {
                                                 // menggunkan try catch untuk mengecek jika suatu waktu terjadi error
 
@@ -112,8 +114,6 @@ function LoginPage() {
                                                     res.text(res.text())
                                                 }
                                             })
-
-
                                     }}
                                 >Login</Button>
                                 <FormGroup>

@@ -1,8 +1,13 @@
 import Link from "next/link"
 import { Button, Card, CardBody, CardText, CardTitle, Form, FormGroup, Input } from "reactstrap"
-
+import {useState} from 'react'
 
 function SignUp() {
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+
+
     return (
         <div className="container-signup">
             <main>
@@ -35,18 +40,29 @@ function SignUp() {
                             style={{}}>
                             <Form style={{}}>
                                 <FormGroup>
-                                    <Input id="username" placeholder="Username"></Input>
+                                    <Input id="username" type="username" placeholder="Username"
+                                    onChange={(e)=>{
+                                        setUsername(e.target.value)
+                                    }}></Input>
                                 </FormGroup>
+                                {/* <FormGroup>
+                                    <Input id="email" type="email" placeholder="Email"
+                                    onChange={(e)=>{
+                                        setEmail(e.target.value)
+                                    }}></Input>
+                                </FormGroup> */}
                                 <FormGroup>
-                                    <Input id="email " placeholder="Email"></Input>
-                                </FormGroup>
-                                <FormGroup>
-                                    <Input id="password" placeholder="Password"></Input>
+                                    <Input id="password" type="password" placeholder="Password"
+                                    onChange={(e)=>{
+                                        setPassword(e.target.value)
+                                    }}></Input>
                                 </FormGroup>
                                 <FormGroup>
                                     <Input id="phone" placeholder="Phone Number"></Input>
                                 </FormGroup>
-                                <Link href='/details-one' style={{
+                                <Link href=
+                                '/details-one'
+                                 style={{
                                     textDecorationLine: 'none'
                                 }}>
                                     <Button outline
@@ -60,6 +76,24 @@ function SignUp() {
                                             justifyContent: 'center',
                                             fontWeight: 'bold',
                                             
+                                        }}
+                                        onClick={()=>{
+                                            const body = {
+                                                username: username,
+                                                email: email,
+                                                password: password,
+                                            }
+
+                                            fetch('/api/api-register', {method: 'POST', body: JSON.stringify(body)})
+                                            .then((res) =>{
+                                                try {
+                                                    res.json()
+                                                    .then(val=>{
+                                                        console.log(val)})
+                                                } catch (error) {
+                                                    res.text(res.text())
+                                                }
+                                            })
                                         }}>Sign Up</Button>
                                 </Link>
                                 <CardText
