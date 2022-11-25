@@ -6,6 +6,7 @@ function SignUp() {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [phoneNumber, setPhoneNumber] = useState("")
 
 
     return (
@@ -45,12 +46,12 @@ function SignUp() {
                                         setUsername(e.target.value)
                                     }}></Input>
                                 </FormGroup>
-                                {/* <FormGroup>
+                                <FormGroup>
                                     <Input id="email" type="email" placeholder="Email"
                                     onChange={(e)=>{
                                         setEmail(e.target.value)
                                     }}></Input>
-                                </FormGroup> */}
+                                </FormGroup>
                                 <FormGroup>
                                     <Input id="password" type="password" placeholder="Password"
                                     onChange={(e)=>{
@@ -58,7 +59,10 @@ function SignUp() {
                                     }}></Input>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Input id="phone" placeholder="Phone Number"></Input>
+                                    <Input id="phone" placeholder="Phone Number"
+                                    onChange={(e)=>{
+                                        setPassword(e.target.value)
+                                    }}></Input>
                                 </FormGroup>
                                 <Link href=
                                 '/details-one'
@@ -78,10 +82,12 @@ function SignUp() {
                                             
                                         }}
                                         onClick={()=>{
+                                            
                                             const body = {
                                                 username: username,
                                                 email: email,
                                                 password: password,
+                                                phoneNumber: phoneNumber,
                                             }
 
                                             fetch('/api/api-register', {method: 'POST', body: JSON.stringify(body)})
@@ -94,6 +100,7 @@ function SignUp() {
                                                     res.text(res.text())
                                                 }
                                             })
+                                            
                                         }}>Sign Up</Button>
                                 </Link>
                                 <CardText

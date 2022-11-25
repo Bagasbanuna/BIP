@@ -13,6 +13,7 @@ const ApiRegister = async (req, res) => {
                 username: body.username,
                 email: body.email,
                 password: body.password,
+                phoneNumber: body.phoneNumber,
             }
         })
         res.status(200).json(regis)

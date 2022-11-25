@@ -63,7 +63,7 @@ function DetailsOne() {
                                     }}></Input>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Input id="tanggalLahir" type="datetime"
+                                    <Input id="tanggalLahir" type="date" placeholder="Tanggal Lahir"
                                     onChange={(e)=>{
                                         setTanggalLahir(e.target.value)
                                     }}></Input>
@@ -101,10 +101,19 @@ function DetailsOne() {
                                             const body = {
                                                 namaDepan: namaDepan,
                                                 namaBelakang: namaBelakang,
-                                                tanggalLahir
+                                                tanggalLahir: tanggalLahir,
                                             }
 
-                                            fetch('/api/api-create-profile', {method: JSON.stringify()})
+                                            fetch('/api/api-create-profile', {method: 'POST', body: JSON.stringify(body)})
+                                            .then((res)=>{
+                                                try {
+                                                    res.json().then((value)=>{
+                                                        console.log(value)
+                                                    })
+                                                } catch (error) {
+                                                    res.text(res.text())
+                                                }
+                                            })
                                         }}>Simpan</Button>
                                 </Link>
                             </Form>
