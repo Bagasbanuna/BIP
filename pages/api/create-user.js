@@ -3,7 +3,7 @@ const prisma = new PrismaClient();
 
 const CreateUser = async (req, res) => {
    if (req.method == 'POST'){
-    // untuk pengembalian saat mencoba dari client
+    // untuk pengembalian data dari DB setelah dikirm melalur JSON.stringify(body)
     // let body = JSON.parse(req.body)
     let body = req.body
 
@@ -12,6 +12,8 @@ const CreateUser = async (req, res) => {
             username: body.username,
             email: body.email,
             password: body.password,
+            phoneNumber: body.phoneNumber
+            
         }
     })
 

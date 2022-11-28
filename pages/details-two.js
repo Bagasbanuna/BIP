@@ -1,8 +1,26 @@
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 import { Button, Card, CardBody, CardFooter, CardHeader, CardText, CardTitle, Col, Form, FormGroup, Input, Row } from "reactstrap"
+// const fs = require('fs')
+// const multer = require('multer')
+// const multer = require('multer')
+// const upload = multer({dest: '/public/assets'})
+
 
 function DetailsTwo() {
+
+    const [ ktp, setKtp] = useState(null)
+    const [ selfie, setSelfie] = useState("")
+    const [ nama, setNama ] = useState("")
+    const [ nik, setNik] = useState("")
+
+    const [createObjectURL, setObjectURL] = useState(null)
+
+    
+
+
+
     return (
         <div className="background">
             <main style={{
@@ -44,14 +62,16 @@ function DetailsTwo() {
                             display: "flex",
                             alignItems: 'center',
                         }}>
-                            <Form>
+                            <Form 
+                            // action="/public/assets" method="post" encType="multipart/form-data"
+                            >
                                 <FormGroup>
                                     <Card style={{
                                         padding: 5,
                                         display: "flex",
                                     }}>
                                         <CardText tag='h5'>Foto KTP</CardText>
-                                        {/* <Image src={"/../public/image/iconKtp.png"} height={100} width={100} alt={"apa"} priority={true}/> */}
+                                        {/* <Image src={"/../public/image/iconKtp.png"} height={80} width={100} alt={"apa"} priority={true}/> */}
                                         {/* <Image
                                             
                                             src={'/../public/image/iconKtp.png'}
@@ -69,7 +89,9 @@ function DetailsTwo() {
                                         <Input type="file"
                                             style={{
                                                 justifyContent: "center",
-
+                                            }}
+                                            onChange={(e)=> {
+                                                setKtp(e.target.value)
                                             }}></Input>
                                     </Card>
                                     <Card style={{
@@ -78,6 +100,7 @@ function DetailsTwo() {
                                         marginTop: 10,
                                     }}>
                                         <CardText tag='h5'>Selfie KTP</CardText>
+                                        {/* <Image src={"/../public/image/selfieKtp.png"} height={80} width={100} alt={"apa"} priority={true}/> */}
                                         {/* <Image
                                             src={'/../public/image/selfieKtp.png'}
                                             alt="pppp"
@@ -95,16 +118,27 @@ function DetailsTwo() {
                                             style={{
                                                 justifyContent: "center",
 
+                                            }}
+                                            onChange={(e)=>{
+                                                setSelfie(e.target.value)
                                             }}></Input>
                                     </Card>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Input id="" type="" placeholder="NIK"></Input>
+                                    <Input id="" type="" placeholder="NIK"
+                                    onChange={(e)=>{
+                                        setNik(e.target.value)
+                                    }}></Input>
                                 </FormGroup>
                                 <FormGroup>
-                                    <Input id="" type="" placeholder="Nama sesuai KTP"></Input>
+                                    <Input id="" type="" placeholder="Nama sesuai KTP"
+                                    onChange={(e)=>{
+                                        setNama(e.target.value)
+                                    }}></Input>
                                 </FormGroup>
-                                <Link href='/login-page'>
+                                <Link href=''
+                                // '/login-page'
+                                >
                                     <Button outline
 
                                         style={{
@@ -115,7 +149,26 @@ function DetailsTwo() {
                                             alignContent: "center",
                                             color: 'black'
 
-                                        }}>Simpan</Button>
+                                        }}
+                                        onClick={()=>{
+                                            const body = {
+                                                ktp: ktp,
+                                                selfie: selfie,
+                                                nama: nama,
+                                                nik: nik,
+                                            }
+                                            fetch('/api/api-create-kelengkapan', {method: 'POST', body:JSON.stringify(body)})
+                                            .then((res) =>{
+                                                try {
+                                                    res.json().then((value)=>{
+                                                        console.log(value)
+                                                    })
+                                                } catch (error) {
+                                                    res.text(res.text())
+                                                }
+                                            })
+                                        }}
+                                        >Simpan</Button>
                                 </Link>
                             </Form>
                         </CardBody>

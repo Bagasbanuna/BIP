@@ -1,3 +1,4 @@
+// USER
 ### get user
 GET http://localhost:3000/api/get-user HTTP/1.1
 
@@ -6,7 +7,38 @@ POST http://localhost:3000/api/create-user HTTP/1.1
 Content-Type: application/json
 
 {
-    "username":"b3",
-    "email":"b3@gmail.com",
-    "password":"1234"
+    "username":"banuna",
+    "email":"banuna@gmail.com",
+    "password":"1234",
+    "phoneNumber": "081234567891"    
+}
+
+// PROFILE
+### get profile
+GET  http://localhost:3000/api/api-get-profile HTTP/1.1
+
+### create profile
+POST  http://localhost:3000/api/api-create-profile HTTP/1.1
+Content-Type: application/json
+
+{
+    "namaDepan":"bnuna",
+    "namaBelakang":"banuna",
+    "tanggalLahir": "1996-11-19T00:00:00.000Z"
+
+}
+
+// KELANGKAPAN
+### get kelengkapan
+GET http://localhost:3000/api/api-get-kelengkapan HTTP/1.1
+
+### create kelengkapan
+POST  http://localhost:3000/api/api-create-kelengkapan HTTP/1.1
+Content-Type: application/json
+
+{
+    "ktp":"ktp",
+    "selfie":"selfie",
+    "nama":"bagas",
+    "nik":"984748430308"
 }
