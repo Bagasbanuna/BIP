@@ -17,7 +17,20 @@ function DetailsTwo() {
 
     const [createObjectURL, setObjectURL] = useState(null)
 
-    
+    const uploadToClient = (event) => {
+        if (event.target.files && event.target.files[0]){
+            const i = event.target.files[0]
+
+            setKtp(i)
+            setObjectURL(URL.createObjectURL(i))
+        }
+    }
+
+    const uploadToServer = async (event) => {
+        const body = new FormData()
+        body.append("files", )
+        const response = await fetch('/api/file') 
+    }
 
 
 
